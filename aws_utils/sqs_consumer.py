@@ -1,7 +1,7 @@
 import logging
 import json
 import boto.sqs
-from .exceptions import MissingQueueError
+from .exceptions import MissingQueueException
 
 
 class SQSConsumer(object):
@@ -46,7 +46,7 @@ class SQSConsumer(object):
         if not queue:
             self.logger.warning(
                 'Can not fetch queue: {}'.format(self.queue_name))
-            raise MissingQueueError(
+            raise MissingQueueException(
                 "Cannot get Queue: {}".format(
                     self.queue_name))
 
